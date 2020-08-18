@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebApplicationMVCW5.Models.EmployeeViewModel>
+
+@{
+    ViewData["Title"] = "EmployeeListView";
+}
+
+<h1>EmployeeListView</h1>
+
+<p>
+    <a asp-action="AddEmployee">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsRetired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalarySuper)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalaryColor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Salary)*@
+                <span style="background-color:@item.SalaryColor">@item.Salary</span>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsRetired)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalarySuper)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalaryColor)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
